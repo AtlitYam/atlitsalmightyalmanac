@@ -1,0 +1,62 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body,
+ul,
+.container {
+    margin: 0px;
+    padding: 0px;
+}
+
+.header,
+.content {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.container {
+    max-width: fit-content;
+}
+
+.header {
+    font-size: 56px;
+    font-weight: bold;
+    background-color: #383444;
+    color: ivory;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    text-align: center;
+}
+
+.content {
+    background-color: darkgrey;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.games ul {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.game img {
+    border-radius: 20px;
+    max-width: 150px;
+    max-height: 150px;
+}
