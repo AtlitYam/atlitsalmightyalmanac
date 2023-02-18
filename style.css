@@ -17,6 +17,7 @@ ul,
 }
 
 .header,
+.menu-bar,
 .content {
     padding-left: 20%;
     padding-right: 20%;
@@ -62,9 +63,12 @@ ul,
 }
 
 .menu-bar {
+    background-color: gray;
     display: flex;
     justify-content: flex-start;
-    padding-bottom: 16px;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .menu-item {
