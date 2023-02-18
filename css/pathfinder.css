@@ -1,0 +1,59 @@
+.pf-campaigns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.pf-campaign {
+    flex: 0 1 40%;
+    border: 2px solid black;
+    background-color: grey;
+    padding: 8px;
+}
+
+.pf-campaign table,
+.pf-campaign tr,
+.pf-campaign th,
+.pf-campaign td {
+    padding: 0px;
+    margin: 0px;
+    text-align: left;
+}
+
+.pf-campaign-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.pf-campaign-description {
+    margin-bottom: 8px;
+}
+
+.pf-campaign-schedule td,
+.pf-campaign-gamemaster td,
+.pf-campaign-players td {
+    padding-left: 8px;
+}
+
+.pf-campaign-schedule td ul,
+.pf-campaign-gamemaster td ul,
+.pf-campaign-players td ul {
+    padding: 0px;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.pf-campaign-schedule td {
+    width: fit-content;
+}
+
+.pf-campaign-schedule td ul li,
+.pf-campaign-gamemaster td ul li,
+.pf-campaign-players td ul li {
+    background-color: beige;
+    border-radius: 25px;
+    padding: 8px 16px;
+}
