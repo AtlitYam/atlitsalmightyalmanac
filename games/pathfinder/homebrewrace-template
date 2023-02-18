@@ -1,0 +1,76 @@
+Flavortext
+<div class="pf-race">
+    <table>
+        <tr>
+            <th>Ability scores</th>
+            <td><br></td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td><span class="text-bold"></span><br>
+            </td>
+        </tr>
+        <tr>
+            <th>Speed</th>
+            <td><span class="text-bold"></span><br>
+            </td>
+        </tr>
+        <tr>
+            <th>Size</th>
+            <td><span class="text-bold"></span><br>
+            </td>
+        </tr>
+        <tr>
+            <th>Senses</th>
+            <td>
+                <div><span class="text-bold"></span><br></div>
+                <div><span class="text-bold"></span><br></div>
+                <div><span class="text-bold"></span><br></div>
+            </td>
+        </tr>
+        <tr>
+            <th>Special movement</th>
+            <td><span class="text-bold"></span><br></td>
+        </tr>
+        <tr>
+            <th>Special abilities</th>
+            <td><span class="text-bold"></span></br></td>
+        </tr>
+        <tr>
+            <th>Languages</th>
+            <td><br></td>
+        </tr>
+    </table>
+
+    <div class="information-subtitle">Alternate racial traits</div>
+    <table>
+        <tr>
+            <th></th>
+            <td></td>
+        </tr>
+    </table>
+
+    <div class="information-subtitle">Favoured class bonus</div>
+    <table>
+        <tr>
+            <th></th>
+            <td></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+        </tr>
+    </table>
+</div>
