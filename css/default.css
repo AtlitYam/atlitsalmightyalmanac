@@ -62,43 +62,6 @@ ul,
     padding-bottom: 16px;
 }
 
-.menu-bar {
-    background-color: gray;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding-top: 8px;
-    padding-bottom: 8px;
-}
-
-.menu-item {
-    align-self: flex-end;
-    border-radius: 15px;
-    max-width: fit-content;
-    background-color: steelblue;
-    font-weight: bold;
-    padding: 8px 16px 8px 16px;
-}
-
-.games ul {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-}
-
-.game {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.game img {
-    border-radius: 20px;
-    max-width: 150px;
-    max-height: 150px;
-}
-
 .footer {
     max-height: 48px;
     padding-right: 5%;
