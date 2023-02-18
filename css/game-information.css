@@ -15,6 +15,10 @@
     font-weight: bold;
 }
 
+.game-information-list ul {
+    list-style-type: disc;
+}
+
 .game-information img {
     max-width: 100%;
 }
