@@ -1,1 +1,1 @@
-This repository will contain my code for the Odin Project.
+A website that functions as a wiki for personal use, to keep useful resources for different kinds of games together in one place.
