@@ -30,6 +30,7 @@
     margin-bottom: 8px;
 }
 
+.pf-race td,
 .pf-campaign-schedule td,
 .pf-campaign-gamemaster td,
 .pf-campaign-players td {
@@ -56,4 +57,17 @@
     background-color: beige;
     border-radius: 25px;
     padding: 8px 16px;
+}
+
+.pf-race table {
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+
+.pf-race tr {
+    border-top: 2px solid black;
+}
+
+.pf-race th {
+    text-align: right;
 }

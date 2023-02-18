@@ -15,6 +15,11 @@
     font-weight: bold;
 }
 
+.information-subtitle {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .information-list ul {
     list-style-type: disc;
 }
