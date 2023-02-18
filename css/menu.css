@@ -2,6 +2,8 @@
     background-color: gray;
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
     align-items: center;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -14,4 +16,8 @@
     background-color: steelblue;
     font-weight: bold;
     padding: 8px 16px 8px 16px;
+}
+
+.menu-item.current-page {
+    background-color: #386890;
 }
