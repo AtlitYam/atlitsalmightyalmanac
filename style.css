@@ -18,8 +18,8 @@ ul,
 
 .header,
 .content {
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 20%;
+    padding-right: 20%;
 }
 
 .container {
@@ -97,5 +97,7 @@ ul,
 
 .footer {
     max-height: 48px;
-    padding-left: 5%;
+    padding-right: 5%;
+    font-size: smaller;
+    text-align: right;
 }
