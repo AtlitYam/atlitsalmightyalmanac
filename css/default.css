@@ -59,6 +59,7 @@ body,
     padding-top: 16px;
     padding-bottom: 16px;
     display: flex;
+    flex-wrap: wrap-reverse;
     gap: 16px;
 }
 
