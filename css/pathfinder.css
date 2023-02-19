@@ -6,7 +6,7 @@
 }
 
 .pf-campaign {
-    flex: 0 1 40%;
+    flex: 1 1 45%;
     border: 2px solid black;
     background-color: grey;
     padding: 8px;
