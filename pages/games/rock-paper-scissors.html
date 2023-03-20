@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/default.css">
+    <link rel="stylesheet" href="../../css/menu.css">
+    <link rel="stylesheet" href="../../css/rock-paper-scissors.css">
+
+    <script src="../../javascript/rock-paper-scissors.js" defer></script>
+
+    <title>Atlit's Almighty Almanac - Self made games: Rock Paper Scissors</title>
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <div class="header">
+                <div class="header-title">
+                    Atlit's Almighty Almanac
+                </div>
+                <div class="header-subtitle">
+                    Self made games: Rock Paper Scissors
+                </div>
+            </div>
+
+            <div class="menu-bar">
+                <a href=https://almanac.atlit.nl>
+                    <div class="menu-item">Homepage</div>
+                </a>
+                <a href=games.html>
+                    <div class="menu-item">Games overview</div>
+                </a>
+                <a href=etch-a-sketch.html>
+                    <div class="menu-item">Etch-a-sketch</div>
+                </a>
+                <div class="menu-item current-page">Rock Paper Scissors</div>
+                <a href=tic-tac-toe.html>
+                    <div class="menu-item">Tic-Tac-Toe</div>
+                </a>
+                <a href=hangman.html>
+                    <div class="menu-item">Hangman</div>
+                </a>
+            </div>
+
+            <div class="content">
+                <div class="game">
+                    <p> Play a game of rock-paper-scissors against the computer. The first to score 5 points wins.</p>
+                    <div>Pick one of the options to play against it.</div>
+                    <div class="form">
+                        <button class="play-button" data-choice="Rock">Play rock</button>
+                        <button class="play-button" data-choice="Paper">Play paper</button>
+                        <button class="play-button" data-choice="Scissors">Play scissors</button>
+                    </div>
+                    <div>Results of round <span class="current-round">0</span>:
+                        <div class="computer-played"></div>
+                        <div class="player-played"></div>
+                    </div>
+                    <ul>
+                        <li>Round winner: <span class="round-winner">Play a round first!</span></li>
+                        <li>Computer score: <span class="computer-score">0</span></li>
+                        <li>Player score: <span class="player-score">0</span></li>
+                    </ul>
+                    <div>Have the computer play against itself for a custom amount of rounds:</div>
+                    <input class="games-amount" value="1"></input> <button class="multiple-games">Start
+                        playing!</button>
+                    <div class="error"></div>
+                </div>
+
+                <div class="winnerDiv" style="display: none">
+                    <div>The game has ended! The <span class="winner"></span> has won!</div>
+
+                    <div>The final results were:</div>
+                    <li>Computer score: <span class="final-computer-score"></span></li>
+                    <li>Player score: <span class="final-player-score"></span></li>
+                    <div><button class="play-again-button">Play again?</button></div>
+                </div>
+            </div>
+
+            <div class="footer">
+                Copyright © Atlit 2023
+            </div>
+        </div>
+    </body>
+</body>
+
+</html>
