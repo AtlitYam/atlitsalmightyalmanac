@@ -62,12 +62,17 @@ playAgainButton.addEventListener('click', function () {
 // Main flow functions
 
 function game(rounds, targetScore) {
-    for (let i = 1; i < rounds + 1; i++) {
+    let i = 0
+    let continueGame = true
+    while (continueGame && i < rounds + 1) {
         let roundResult = playRound(i)
         handleRoundResult(roundResult, targetScore)
         currentRoundField.textContent = i
         console.log(playerScore)
         console.log(computerScore)
+
+        playerScore >= targetScore || computerScore >= targetScore ? continueGame = false : continueGame = true
+        i++
     }
     console.log(determineGameResult())
 }
@@ -138,7 +143,7 @@ function handleRoundResult(roundResult, targetScore = 5) {
     let winner = ''
     roundResult === 'Player' ? winner = updatePlayerScore() : roundResult === 'Computer' ? winner = updateComputerScore() : winner = "The round was a tie!"
 
-    if (playerScore === targetScore || computerScore === targetScore) {
+    if (playerScore >= targetScore || computerScore >= targetScore) {
         gameDiv.style.display = "none"
         winnerText.textContent = playerScore > computerScore ? 'Player' : 'Computer'
         finalComputerScoreField.textContent = computerScore
