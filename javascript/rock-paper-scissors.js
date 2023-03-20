@@ -28,14 +28,19 @@ playButtons.forEach(button => button.addEventListener('click', function () {
 
 playMultipleGamesButton.addEventListener('click', function () {
     const numberOfRounds = Number(document.querySelector('.games-amount').value)
-    console.log(numberOfRounds)
+    const targetScore = Number(document.querySelector('.target-score').value)
     if (!numberOfRounds || numberOfRounds < 1 || numberOfRounds > 50000) {
         console.log("error")
         errorField.textContent = 'Please only use numbers between 1 and 50000!'
         return // Invalid input
     }
+    if (!targetScore || targetScore < 1 || targetScore > 50000) {
+        console.log("error")
+        errorField.textContent = 'Please only use numbers between 1 and 50000!'
+        return // Invalid input
+    }
     errorField.textContent = ''
-    game(numberOfRounds)
+    game(numberOfRounds, targetScore)
 })
 
 playAgainButton.addEventListener('click', function () {
@@ -56,10 +61,10 @@ playAgainButton.addEventListener('click', function () {
 
 // Main flow functions
 
-function game(rounds) {
+function game(rounds, targetScore) {
     for (let i = 1; i < rounds + 1; i++) {
         let roundResult = playRound(i)
-        handleRoundResult(roundResult)
+        handleRoundResult(roundResult, targetScore)
         currentRoundField.textContent = i
         console.log(playerScore)
         console.log(computerScore)
@@ -129,11 +134,11 @@ function determineGameResult() {
     return playerScore > computerScore ? "The player wins the game!" : playerScore === computerScore ? "It's a tie! Game over." : "The computer wins the game!"
 }
 
-function handleRoundResult(roundResult) {
+function handleRoundResult(roundResult, targetScore = 5) {
     let winner = ''
     roundResult === 'Player' ? winner = updatePlayerScore() : roundResult === 'Computer' ? winner = updateComputerScore() : winner = "The round was a tie!"
 
-    if (playerScore === 5 || computerScore === 5) {
+    if (playerScore === targetScore || computerScore === targetScore) {
         gameDiv.style.display = "none"
         winnerText.textContent = playerScore > computerScore ? 'Player' : 'Computer'
         finalComputerScoreField.textContent = computerScore
