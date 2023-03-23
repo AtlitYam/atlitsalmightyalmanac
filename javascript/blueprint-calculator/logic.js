@@ -1,14 +1,14 @@
 // Imports
 import data from './data.js'
 import validation from './validation.js'
-import panel from './panel.js'
+import resultPanel from './resultPanel.js'
 
 // Loading functions
 
 // Execute
-const execute = () => {
+const execute = (parent) => {
     data.loadDataFromForm(data)
-    if (validation.validate()) {
+    if (validation.validate(parent)) {
         const requiredNational = calculateRequiredNationals()
         const requiredUniversal = calculateRequiredUniversals()
 
@@ -17,7 +17,7 @@ const execute = () => {
 
         const possible = isPossible(remainingNational, remainingUniversal)
 
-        panel.createResultsDiv(requiredNational, requiredUniversal, remainingNational, remainingUniversal, possible)
+        resultPanel.createResultsDiv(parent, requiredNational, requiredUniversal, remainingNational, remainingUniversal, possible)
     }
 }
 

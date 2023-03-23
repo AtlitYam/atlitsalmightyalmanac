@@ -1,0 +1,27 @@
+.blueprint-calculator {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 32px;
+    /* display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 3;
+    grid-auto-rows: minmax(0px, auto);
+     */
+}
+
+.calculator {
+    order: 1;
+    justify-self: flex-start;
+}
+
+.empty-error,
+.error-message {
+    order: 2;
+}
+
+.empty-result,
+.result {
+    order: 3;
+    justify-self: end;
+}

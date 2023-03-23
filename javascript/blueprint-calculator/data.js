@@ -1,4 +1,4 @@
-import panel from './panel.js'
+import init from './init.js'
 
 const nations = [
     { name: 'Germany', altNations: ['Japan'] },
@@ -29,13 +29,13 @@ const tiers = [
 
 const loadElementsFromForm = (data) => {
     const newData = {
-        nationSelect: panel.mainElement.querySelector('.nation-select select'),
-        startTierSelect: panel.mainElement.querySelector('.start-tier-select select'),
-        goalTierSelect: panel.mainElement.querySelector('.goal-tier-select select'),
-        universalBlueprintField: panel.mainElement.querySelector('.owned-blueprint-inputs input.universal'),
-        nationalBlueprintField: panel.mainElement.querySelector('.owned-blueprint-inputs input.national'),
-        altNationalBlueprintFields: panel.mainElement.querySelectorAll('.owned-blueprint-inputs input.altNational'),
-        submitButton: panel.mainElement.querySelector('.submit-button button')
+        nationSelect: init.mainElement.querySelector('select.nation-select'),
+        startTierSelect: init.mainElement.querySelector('select.start-tier-select'),
+        goalTierSelect: init.mainElement.querySelector('select.goal-tier-select'),
+        universalBlueprintField: init.mainElement.querySelector('input.blueprint-inputs.universal'),
+        nationalBlueprintField: init.mainElement.querySelector('input.blueprint-inputs.national'),
+        altNationalBlueprintFields: init.mainElement.querySelectorAll('input.blueprint-inputs.altNational'),
+        submitButton: init.mainElement.querySelector('button.submit-button')
     }
     addValuesToObject(data, newData)
 }

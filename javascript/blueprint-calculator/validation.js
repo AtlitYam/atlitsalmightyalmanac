@@ -1,12 +1,12 @@
+import g from '../genericPanel.js'
 import data from './data.js'
-import panel from './panel.js'
 
 // Main function
-const validate = () =>
-    !validateNation() ? panel.createError('Nation is required')
-        : !validateTiers() ? panel.createError('Invalid tier selection')
-            : !validateUniversals() ? panel.createError('Invalid amount in universal fragments')
-                : !validateNationals() ? panel.createError('Invalid amount in national fragments or alternative national fragments')
+const validate = (parent) =>
+    !validateNation() ? g.createError(parent, 'Nation is required')
+        : !validateTiers() ? g.createError(parent, 'Invalid tier selection')
+            : !validateUniversals() ? g.createError(parent, 'Invalid amount in universal fragments')
+                : !validateNationals() ? g.createError(parent, 'Invalid amount in national fragments or alternative national fragments')
                     : true
 
 // Sub functions

@@ -1,0 +1,37 @@
+.calculator {
+    display: grid;
+    grid-template-columns: 200px 150px;
+    column-gap: 16px;
+    row-gap: 8px;
+    padding-bottom: 8px;
+}
+
+input,
+select,
+button {
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 4px;
+}
+
+.result.title {
+    order: 1;
+}
+
+.start-tier-select {
+    order: 2;
+}
+
+.goal-tier-select {
+    order: 3;
+}
+
+.blueprint-inputs {
+    order: 4;
+}
+
+.submit-button {
+    grid-column-start: 2;
+    order: 5;
+}
