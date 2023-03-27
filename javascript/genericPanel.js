@@ -6,7 +6,7 @@ const create = (htmlTag, ...classes) => {
 
 const createTextDiv = (text, ...classes) => {
     const div = create('div', ...classes)
-    div.textContent = text
+    div.innerText = text
     addClasses(div, classes)
     return div
 }

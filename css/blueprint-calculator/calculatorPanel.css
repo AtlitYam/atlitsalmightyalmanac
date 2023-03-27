@@ -1,6 +1,6 @@
 .calculator {
     display: grid;
-    grid-template-columns: 200px 150px;
+    grid-template-columns: 200px minmax(100px, 150px);
     column-gap: 16px;
     row-gap: 8px;
     padding-bottom: 8px;

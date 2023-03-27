@@ -2,18 +2,18 @@
 import g from '../genericPanel.js'
 
 // Panel creation function
-const createResultsDiv = (parent, requiredNational = 0, requiredUniversal = 0, remainingNational = 0, remainingUniversal = 0, isGoalPossible = false) => {
+const createResultsDiv = (parent, results) => {
     g.destroyElements(parent, '.empty-result')
     g.destroyElements(parent, '.result')
-    const result = g.create('div', 'result')
+    const resultDiv = g.create('div', 'result')
 
-    g.appendChildren(result, [
+    g.appendChildren(resultDiv, [
         g.createTextDiv('Results:', 'title'),
-        createResultGrid(requiredNational, requiredUniversal, remainingNational, remainingUniversal, isGoalPossible),
-        createResultGoalPossible(isGoalPossible)
+        createResultGrids(results),
+        createResultGoalPossible(results)
     ])
 
-    parent.appendChild(result)
+    parent.appendChild(resultDiv)
 }
 
 const createEmptyResultsDiv = (parent) => {
@@ -24,44 +24,46 @@ const createEmptyResultsDiv = (parent) => {
 
 // Result functions
 
-const createResultGrid = (requiredNational, requiredUniversal, remainingNational, remainingUniversal, isGoalPossible) => {
-    return g.appendChildren(g.create('div', 'result-grid'), [
-        g.createTextDiv('National fragments', 'subtitle', 'national'),
-        g.createTextDiv('Universal fragments', 'subtitle', 'universal'),
-        ...createResultsRequired(requiredNational, requiredUniversal),
-        ...createResultsRemaining(remainingNational, remainingUniversal, isGoalPossible)
+const createResultGrids = (results) => {
+    return g.appendChildren(g.create('div', 'result-grid-parent'), [
+        createResultsNational(results),
+        createResultsUniversal(results)
     ])
 }
 
-const createResultsRequired = (requiredNational, requiredUniversal) => {
-    return [
-        g.createTextDiv(`You will require ${requiredNational} national fragments.`, 'required-fragments', 'national'),
-        g.createTextDiv(`You will require ${requiredUniversal} universal fragments.`, 'required-fragments', 'universal')
-    ]
+const createResultsNational = (results) => {
+    return g.appendChildren(g.create('div', 'result-grid', 'national'), [
+        g.createTextDiv('National fragments', 'subtitle', 'national'),
+        g.createTextDiv(`You will require ${results.requiredNational} national fragments.`, 'required-fragments', 'national'),
+        createResultsRemainingNational(results.remainingNational),
+    ])
 }
 
-const createResultsRemaining = (remainingNational, remainingUniversal) => {
-    return [
-        createResultsRemainingNational(remainingNational),
-        createResultsRemainingUniversal(remainingUniversal)
-    ]
+const createResultsUniversal = (results) => {
+    return g.appendChildren(g.create('div', 'result-grid', 'universal'), [
+        g.createTextDiv('Universal fragments', 'subtitle', 'universal'),
+        g.createTextDiv(`You will require ${results.requiredUniversal} universal fragments.`, 'required-fragments', 'universal'),
+        createResultsRemainingUniversal(results.remainingUniversal)
+    ])
 }
 
 const createResultsRemainingNational = (remainingNational) => {
-    return remainingNational < 0
+    return remainingNational <= 0
         ? g.createTextDiv(`You will have ${Math.abs(remainingNational)} national fragments remaining.`, 'remaining-fragments', 'national', 'green')
         : g.createTextDiv(`You are lacking ${remainingNational} national fragments.`, 'remaining-fragments', 'national', 'red')
 }
 
 const createResultsRemainingUniversal = (remainingUniversal) => {
-    return remainingUniversal < 0
+    return remainingUniversal <= 0
         ? g.createTextDiv(`You will have ${Math.abs(remainingUniversal)} universal fragments remaining.`, 'remaining-fragments', 'universal', 'green')
         : g.createTextDiv(`You are lacking ${remainingUniversal} universal fragments.`, 'remaining-fragments', 'universal', 'red')
 }
 
-const createResultGoalPossible = (possible) => {
-    const isPossibleClass = possible ? 'green' : 'red'
-    return g.createTextDiv(`Reaching your goal tier ${possible ? 'is' : 'is not'} possible.`, 'goal-possibility', isPossibleClass)
+const createResultGoalPossible = (results) => {
+    const isPossibleClass = results.goalPossible ? 'green' : 'red'
+    return results.goalPossible
+        ? g.createTextDiv('Reaching your goal is possible.', 'goal-possibility', isPossibleClass)
+        : g.createTextDiv(`Reaching your goal is not possible.\nYou will be able to reach ${results.maxTier.name}.`, 'goal-possibility', isPossibleClass)
 }
 
 export default {

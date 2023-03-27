@@ -9,42 +9,33 @@ import resultPanel from './resultPanel.js'
 const execute = (parent) => {
     data.loadDataFromForm(data)
     if (validation.validate(parent)) {
-        const requiredNational = calculateRequiredNationals()
-        const requiredUniversal = calculateRequiredUniversals()
-
-        const remainingNational = calculateremainingNationals(requiredNational)
-        const remainingUniversal = calculateremainingUniversals(requiredUniversal)
-
-        const possible = isPossible(remainingNational, remainingUniversal)
-
-        resultPanel.createResultsDiv(parent, requiredNational, requiredUniversal, remainingNational, remainingUniversal, possible)
+        resultPanel.createResultsDiv(parent, doCalculations())
     }
 }
 
 // Logic
-const calculateRequired = (type) => {
-    let currentTier = nextTier(data.startTierValue)
-    let total = 0
-    let maxReached = false
-    while (!maxReached && currentTier.numeric <= data.goalTierValue.numeric) {
-        total += type === 'national' ? currentTier.cost.national : currentTier.cost.universal
-
-        currentTier = nextTier(currentTier)
-        maxReached = currentTier === undefined
-    }
-    return total
+const doCalculations = () => {
+    return neededTiers().reduce(({ requiredNational, requiredUniversal, goalPossible, maxTier, nationalFragmentsValue, universalFragmentsValue }, currentTier) => ({
+        universalFragmentsValue,
+        nationalFragmentsValue,
+        requiredNational: requiredNational + currentTier.cost.national,
+        requiredUniversal: requiredUniversal + currentTier.cost.universal,
+        remainingNational: requiredNational + currentTier.cost.national - nationalFragmentsValue,
+        remainingUniversal: requiredUniversal + currentTier.cost.universal - universalFragmentsValue,
+        goalPossible: isCurrentTierPossible(requiredNational + currentTier.cost.national, requiredUniversal + currentTier.cost.universal),
+        maxTier: goalPossible ? currentTier : maxTier
+    }), {
+        requiredNational: 0,
+        requiredUniversal: 0,
+        nationalFragmentsValue: data.nationalFragmentsValue,
+        universalFragmentsValue: data.universalFragmentsValue
+    })
 }
-
-const calculateRequiredNationals = () => calculateRequired('national')
-const calculateremainingNationals = (requiredNationals) => requiredNationals - data.nationalFragmentsValue
-
-const calculateRequiredUniversals = () => calculateRequired('universal')
-const calculateremainingUniversals = (requiredUniversals) => requiredUniversals - data.universalFragmentsValue
-
-const isPossible = (remainingNational, remainingUniversal) => remainingNational < 0 && remainingUniversal < 0
 
 // Utils
 
-const nextTier = (currentTier) => data.tiers.find(tier => tier.numeric === currentTier.numeric + 1)
+const isCurrentTierPossible = (national, universal) => national <= data.nationalFragmentsValue && universal <= data.universalFragmentsValue
+
+const neededTiers = () => data.tiers.filter(tier => tier.numeric > data.startTierValue.numeric && tier.numeric <= data.goalTierValue.numeric).reverse()
 
 export default { execute }
