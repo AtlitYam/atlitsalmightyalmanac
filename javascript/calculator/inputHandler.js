@@ -2,23 +2,20 @@ import data from './data.js'
 
 // Input management functions
 
-const addToInput = (input) => {
-    data.elements.inputField.innerText = determineNewInput('add', input)
-}
+const addToInput = (input) => data.elements.inputField.innerText = determineNewInput('add', input)
 
-const removeFromInput = () => {
-    data.elements.inputField.innerText = determineNewInput('remove')
-}
+const removeFromInput = () => data.elements.inputField.innerText = determineNewInput('remove')
 
-const clearInput = () => {
-    data.elements.inputField.innerText = determineNewInput('clear')
-}
+const clearInput = () => data.elements.inputField.innerText = determineNewInput('clear')
+
+const setInputTo = (input) => data.elements.inputField.innerText = input
+
+const getInput = () => data.elements.inputField.innerText
 
 // Determine new input
 
 const determineNewInput = (action, input = '') => {
     const currentInput = data.elements.inputField.innerText
-
     switch (action) {
         case 'clear':
             return ''
@@ -42,5 +39,7 @@ const determineNewInput = (action, input = '') => {
 export default {
     addToInput,
     removeFromInput,
-    clearInput
+    clearInput,
+    setInputTo,
+    getInput
 }
