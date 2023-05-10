@@ -48,15 +48,15 @@ const createResultsUniversal = (results) => {
 }
 
 const createResultsRemainingNational = (remainingNational) => {
-    return remainingNational <= 0
+    return remainingNational >= 0
         ? g.createTextDiv(`You will have ${Math.abs(remainingNational)} national fragments remaining.`, 'remaining-fragments', 'national', 'green')
-        : g.createTextDiv(`You are lacking ${remainingNational} national fragments.`, 'remaining-fragments', 'national', 'red')
+        : g.createTextDiv(`You are lacking ${Math.abs(remainingNational)} national fragments.`, 'remaining-fragments', 'national', 'red')
 }
 
 const createResultsRemainingUniversal = (remainingUniversal) => {
-    return remainingUniversal <= 0
+    return remainingUniversal >= 0
         ? g.createTextDiv(`You will have ${Math.abs(remainingUniversal)} universal fragments remaining.`, 'remaining-fragments', 'universal', 'green')
-        : g.createTextDiv(`You are lacking ${remainingUniversal} universal fragments.`, 'remaining-fragments', 'universal', 'red')
+        : g.createTextDiv(`You are lacking ${Math.abs(remainingUniversal)} universal fragments.`, 'remaining-fragments', 'universal', 'red')
 }
 
 const createResultGoalPossible = (results) => {

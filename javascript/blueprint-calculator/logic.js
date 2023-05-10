@@ -14,28 +14,53 @@ const execute = (parent) => {
 }
 
 // Logic
+
 const doCalculations = () => {
-    return neededTiers().reduce(({ requiredNational, requiredUniversal, goalPossible, maxTier, nationalFragmentsValue, universalFragmentsValue }, currentTier) => ({
-        universalFragmentsValue,
-        nationalFragmentsValue,
-        requiredNational: requiredNational + currentTier.cost.national,
-        requiredUniversal: requiredUniversal + currentTier.cost.universal,
-        remainingNational: requiredNational + currentTier.cost.national - nationalFragmentsValue,
-        remainingUniversal: requiredUniversal + currentTier.cost.universal - universalFragmentsValue,
-        goalPossible: isCurrentTierPossible(requiredNational + currentTier.cost.national, requiredUniversal + currentTier.cost.universal),
-        maxTier: goalPossible ? currentTier : maxTier
-    }), {
-        requiredNational: 0,
-        requiredUniversal: 0,
-        nationalFragmentsValue: data.nationalFragmentsValue,
-        universalFragmentsValue: data.universalFragmentsValue
-    })
+    const startTier = data.startTierValue
+    const goalTier = data.goalTierValue
+    const availableNational = data.nationalFragmentsValue
+    const availableUniversal = data.universalFragmentsValue
+    let resultValues = {
+        requiredNational: calculateNeededNational(startTier, goalTier, availableNational),
+        requiredUniversal: calculateNeededUniversal(startTier, goalTier, availableUniversal),
+        remainingNational: calculateRemainingNational(startTier, goalTier, availableNational),
+        remainingUniversal: calculateRemainingUniversal(startTier, goalTier, availableUniversal),
+    }
+
+    if (calculateTierReachable(startTier, goalTier, availableNational, availableUniversal)) {
+        return {
+            ...resultValues,
+            goalPossible: true
+        }
+    } else {
+        return {
+            ...resultValues,
+            maxTier: calculateMaximumPossibleTier(startTier, goalTier, availableNational, availableUniversal),
+            goalPossible: false
+        }
+    }
 }
 
 // Utils
 
-const isCurrentTierPossible = (national, universal) => national <= data.nationalFragmentsValue && universal <= data.universalFragmentsValue
+const calculateTierReachable = (startTier, goalTier, availableNational, availableUniversal) => calculateNeededNational(startTier, goalTier) <= availableNational && calculateNeededUniversal(startTier, goalTier) <= availableUniversal // Bool
 
-const neededTiers = () => data.tiers.filter(tier => tier.numeric > data.startTierValue.numeric && tier.numeric <= data.goalTierValue.numeric).reverse()
+const calculateRemainingNational = (startTier, goalTier, availableNational) => availableNational - calculateNeededNational(startTier, goalTier) // Number
+
+const calculateRemainingUniversal = (startTier, goalTier, availableUniversal) => availableUniversal - calculateNeededUniversal(startTier, goalTier) // Number
+
+const calculateNeededNational = (startTier, goalTier) => goalTier.cost.national - startTier.cost.national // Number
+
+const calculateNeededUniversal = (startTier, goalTier) => goalTier.cost.universal - startTier.cost.universal // Number
+
+const calculateMaximumPossibleTier = (startTier, goalTier, availableNational, availableUniversal) => { // Tier
+    for (const tier of neededTiers(startTier, goalTier)) {
+        if (calculateTierReachable(startTier, tier, availableNational, availableUniversal)) {
+            return tier
+        }
+    }
+}
+
+const neededTiers = (startTier, goalTier) => data.tiers.filter(tier => tier.numeric > startTier.numeric && tier.numeric <= goalTier.numeric) // Array of Tiers
 
 export default { execute }
