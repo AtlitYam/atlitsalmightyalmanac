@@ -2,7 +2,7 @@ import g from '../genericPanel.js'
 import logic from './logic.js'
 
 const run = (parent) => {
-    g.appendChildren(parent, createSubmitButton(parent, 'submit-button'))
+    g.appendChildren(parent, [createSubmitButton(parent, 'submit-button')])
 }
 
 const createSubmitButton = (parent, ...classes) => {
