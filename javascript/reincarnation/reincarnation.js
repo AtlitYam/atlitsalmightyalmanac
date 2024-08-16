@@ -8,9 +8,16 @@ const run = (parent) => {
 const createSubmitButton = (parent, ...classes) => {
     const button = g.create('button')
     button.textContent = 'Find your new race!'
-    button.addEventListener('click', function () { logic.execute(parent) })
+    button.addEventListener('click', function () { createResultPanel(parent, logic.execute()) })
     g.addClasses(button, classes)
     return button
+}
+
+const createResultPanel = (parent, result) => {
+    g.destroyElements(parent, '.result')
+    const resultPanel = g.createTextDiv('result', 'result')
+    resultPanel.textContent = result
+    g.appendChildren(parent, [resultPanel])
 }
 
 export default {
