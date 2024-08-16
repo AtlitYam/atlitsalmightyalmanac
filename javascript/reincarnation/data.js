@@ -138,3 +138,7 @@ const reincarnationTable = [
     "Wyvaran",
     "Game Masters Choice"
 ]
+
+export default {
+    reincarnationTable
+}
